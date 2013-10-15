@@ -8,9 +8,9 @@ use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Application;
 
 /**
- * Console service.
+ * Console extension
  *
- * @author Martin Bažík
+ * @author Martin Bažík <martin@bazo.sk>
  */
 class ConsoleExtension extends \Nette\DI\CompilerExtension
 {
