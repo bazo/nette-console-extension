@@ -54,7 +54,7 @@ class ConsoleExtension extends \Nette\DI\CompilerExtension
 	 */
 	public static function createConsole(Container $container, $config)
 	{
-		$console = new Application(sprintf('%s command line interface, version: %s', $config['name'], $config['version']));
+		$console = new Application($config['name'], $config['version']);
 
 		$helperSet = new HelperSet;
 
