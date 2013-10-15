@@ -38,7 +38,7 @@ class ConsoleExtension extends \Nette\DI\CompilerExtension
 		// console application
 		$container->addDefinition($this->prefix('console'))
 				->setClass('Symfony\Component\Console\Application')
-				->setFactory('Extensions\ConsoleExtension::createConsole', ['@container', $config])
+				->setFactory('Bazo\Console\DI\ConsoleExtension::createConsole', ['@container', $config])
 				->setAutowired(FALSE);
 
 		// aliases
