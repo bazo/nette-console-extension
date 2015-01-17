@@ -12,7 +12,7 @@ use Symfony\Component\Console\Application;
  *
  * @author Martin Bažík <martin@bazo.sk>
  */
-class ConsoleExtension extends \Nette\DI\CompilerExtension
+class ConsoleExtension extends Nette\DI\CompilerExtension
 {
 
 	const COMMAND_TAG = 'console.command';
@@ -20,8 +20,8 @@ class ConsoleExtension extends \Nette\DI\CompilerExtension
 
 
 	private $defaults = [
-		'name' => Nette\Framework::NAME,
-		'version' => Nette\Framework::VERSION,
+		'name' => 'Nette Framework Console',
+		'version' => 1,
 	];
 
 
