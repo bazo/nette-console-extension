@@ -16,6 +16,7 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 {
 
 	const COMMAND_TAG = 'console.command';
+	const KDYBY_COMMAND_TAG = 'kdyby.console.command';
 	const HELPER_TAG = 'console.helper';
 
 
@@ -65,8 +66,11 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 		$console->setHelperSet($helperSet);
 		$console->setCatchExceptions(false);
 
-		$commands = array();
+		$commands = [];
 		foreach (array_keys($container->findByTag(self::COMMAND_TAG)) as $name) {
+			$commands[] = $container->getService($name);
+		}
+		foreach (array_keys($container->findByTag(self::KDYBY_COMMAND_TAG)) as $name) {
 			$commands[] = $container->getService($name);
 		}
 		$console->addCommands($commands);
