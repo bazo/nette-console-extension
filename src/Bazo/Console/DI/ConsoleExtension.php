@@ -23,6 +23,7 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 	private $defaults = [
 		'name' => 'Nette Framework Console',
 		'version' => 1,
+		'catchExceptions' => TRUE
 	];
 
 
@@ -64,7 +65,7 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 		}
 
 		$console->setHelperSet($helperSet);
-		$console->setCatchExceptions(false);
+		$console->setCatchExceptions($config['catchExceptions']);
 
 		$commands = [];
 		foreach (array_keys($container->findByTag(self::COMMAND_TAG)) as $name) {
