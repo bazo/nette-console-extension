@@ -2,14 +2,13 @@
 
 namespace Bazo\Console\DI;
 
+
 use Nette;
 use Nette\DI\Container;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Application;
 
 /**
- * Console extension
- *
  * @author Martin Bažík <martin@bazo.sk>
  */
 class ConsoleExtension extends Nette\DI\CompilerExtension
@@ -19,13 +18,11 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 	const KDYBY_COMMAND_TAG = 'kdyby.console.command';
 	const HELPER_TAG = 'console.helper';
 
-
 	private $defaults = [
 		'name' => 'Nette Framework Console',
 		'version' => 1,
 		'catchExceptions' => TRUE
 	];
-
 
 	/**
 	 * Processes configuration data
@@ -37,16 +34,12 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 		$container = $this->getContainerBuilder();
 		$config = $this->getConfig($this->defaults);
 
-		// console application
 		$container->addDefinition($this->prefix('console'))
-				->setClass('Symfony\Component\Console\Application')
-				->setFactory('Bazo\Console\DI\ConsoleExtension::createConsole', ['@container', $config])
-				->setAutowired(FALSE);
-
-		// aliases
-		$container->addDefinition('console')
-				->setClass('Symfony\Component\Console\Application')
-				->setFactory('@container::getService', [$this->prefix('console')]);
+				->setClass(Application::class)
+				->setFactory('Bazo\Console\DI\ConsoleExtension::createConsole', [
+					'@container',
+					$config
+				]);
 	}
 
 
@@ -81,4 +74,3 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 
 
 }
-
