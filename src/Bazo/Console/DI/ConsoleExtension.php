@@ -32,7 +32,7 @@ class ConsoleExtension extends Nette\DI\CompilerExtension
 	public function loadConfiguration()
 	{
 		$container = $this->getContainerBuilder();
-		$config = $this->getConfig($this->defaults);
+		$config = $this->validateConfig($this->defaults, $this->config);
 
 		$container->addDefinition($this->prefix('console'))
 				->setClass(Application::class)
